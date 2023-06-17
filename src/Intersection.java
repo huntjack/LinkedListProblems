@@ -4,13 +4,13 @@ import java.util.Optional;
 public class Intersection {
     public static void main(String[] args) {
         Node<Integer> listOneHead = createList(10);
-        Node<Integer> currentListOneNode = get(listOneHead, 8)
+        Node<Integer> target = get(listOneHead, 8)
                 .orElseThrow(NoSuchElementException::new);
-        System.out.println("Selected listOneNode = " + currentListOneNode.getValue());
+        System.out.println("Selected target = " + target.getValue());
         Node<Integer> listTwoHead = createList(7);
         Node<Integer> currentLastNodeOfListTwo = get(listTwoHead, 6)
                 .orElseThrow(NoSuchElementException::new);
-        currentLastNodeOfListTwo.setNext(currentListOneNode);
+        currentLastNodeOfListTwo.setNext(target);
         Optional<Node<Integer>> optionalResult = intersect(listOneHead, listTwoHead);
         int result = optionalResult
                 .orElseThrow(NoSuchElementException::new)

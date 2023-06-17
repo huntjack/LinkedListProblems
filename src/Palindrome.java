@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class Palindrome {
     public static void main(String[] args) {
         String palindrome = new String("racecar");
@@ -17,11 +19,13 @@ public class Palindrome {
         Node<Character> charactersHeadNode = characters.getHead();
         LoadedStack loadedStack = loadStack(charactersHeadNode, mid);
         Node<Character> current = loadedStack.getCharacterNode();
-        DoublyLinkedList<Character> stack = loadedStack.getStack();
+        MyStack<Character> stack = loadedStack.getStack();
         current = isOdd(characters.size()) ? current.getNext() : current;
         while(current != null) {
             char secondHalfChar = current.getValue();
-            char firstHalfChar = stack.pop();
+            char firstHalfChar = stack
+                    .pop()
+                    .orElseThrow(NoSuchElementException::new);
             if(firstHalfChar != secondHalfChar) {
                 return false;
             }
@@ -30,7 +34,7 @@ public class Palindrome {
         return true;
     }
     private static LoadedStack loadStack(Node<Character> characterNode, int mid) {
-        DoublyLinkedList<Character> stack = new DoublyLinkedList<>();
+        MyStack<Character> stack = new MyStack<>();
         for(int i = 0; i < mid; i++) {
             char character = characterNode.getValue();
             stack.push(character);

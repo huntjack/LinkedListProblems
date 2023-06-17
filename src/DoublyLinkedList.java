@@ -30,9 +30,6 @@ public class DoublyLinkedList<T> {
         tail = newNode;
         size++;
     }
-    public void push(T value) {
-        addLast(value);
-    }
     private void createNode(T value) {
         head = new DoublyLinkedListNode<>(value);
         tail = head;
@@ -54,21 +51,24 @@ public class DoublyLinkedList<T> {
             current = current.getNext();
         }
     }
-    public void removeFirstElement() {
+    public Optional<T> removeFirstElement() {
         if(isEmpty()) {
-            return;
+            return Optional.empty();
         }
-        if(!isEmpty() && tail.equals(head)) {
+        if(!isEmpty() && tail == head) {
+            T headValue = head.getValue();
             tail = null;
             head = null;
             size--;
-            return;
+            return Optional.of(headValue);
         }
+        T headValue = head.getValue();
         DoublyLinkedListNode<T> next = head.getNext();
         next.setPrevious(null);
         head.setNext(null);
         head = next;
         size--;
+        return Optional.of(headValue);
     }
     public void removeNextElement(DoublyLinkedListNode<T> current) {
         DoublyLinkedListNode<T> next = current.getNext();
@@ -85,17 +85,17 @@ public class DoublyLinkedList<T> {
             size--;
         }
     }
-    public T pop() {
+    public Optional<T> pop() {
         if(isEmpty()) {
-            throw new NoSuchElementException();
+            return Optional.empty();
         } else if(tail == head) {
             T value = tail.getValue();
             removeFirstElement();
-            return value;
+            return Optional.of(value);
         } else  {
             T value = tail.getValue();
             removeNextElement(tail.getPrevious());
-            return value;
+            return Optional.of(value);
         }
     }
     public Optional<T> get(int element) {
@@ -124,8 +124,11 @@ public class DoublyLinkedList<T> {
     public DoublyLinkedListNode<T> getHead() {
         return head;
     }
+    public DoublyLinkedListNode<T> getTail() {
+        return tail;
+    }
     public Boolean isEmpty() {
-        return size < 1 ? true : false;
+        return size < 1;
     }
     public void print() {
         DoublyLinkedListNode<T> current = head;
