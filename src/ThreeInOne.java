@@ -1,6 +1,4 @@
 import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 public class ThreeInOne<T> {
     private T[] array;
