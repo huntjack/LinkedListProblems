@@ -20,8 +20,14 @@ public class SumLists {
         resultTwo.print();
     }
     public static SinglyLinkedList<Integer> sumListsInReverseOrder(SinglyLinkedList<Integer> listOne, SinglyLinkedList<Integer> listTwo) {
-        Node<Integer> currentOne = listOne.getHead();
-        Node<Integer> currentTwo = listTwo.getHead();
+        Node<Integer> currentOne =
+                listOne
+                        .getHead()
+                        .orElseThrow();
+        Node<Integer> currentTwo =
+                listTwo
+                        .getHead()
+                        .orElseThrow();
         SinglyLinkedList<Integer> result = new SinglyLinkedList<>();
         int size = listOne.size() > listTwo.size() ? listOne.size() : listTwo.size();
         int carryDigit = 0;
@@ -56,8 +62,14 @@ public class SumLists {
         listTwo = listOfLists
                 .get(1)
                 .orElseThrow(NoSuchElementException::new);
-        Node<Integer>  listOneHead = listOne.getHead();
-        Node<Integer>  listTwoHead = listTwo.getHead();
+        Node<Integer>  listOneHead =
+                listOne
+                        .getHead()
+                        .orElseThrow();
+        Node<Integer>  listTwoHead =
+                listTwo
+                        .getHead()
+                        .orElseThrow();
         PartialResult partialResult = addDigits(listOneHead, listTwoHead);
         int carryDigit = partialResult.getCarryDigit();
         if(carryDigit > 0) {

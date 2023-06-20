@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class SinglyLinkedList<T> {
@@ -34,38 +35,44 @@ public class SinglyLinkedList<T> {
         current.setNext(newNode);
         size++;
     }
-    public void remove(int element) {
+    public T remove(int element) {
         if(head == null) {
-            return;
+            throw new EmptyListException();
         } else if(element == 0) {
-            removeFirstElement();
-            return;
+            return removeFirstElement();
         }
         Node<T> current = head;
         for(int i = 0; i < element && current != null; i++) {
             int nextElement = i + 1;
             if(nextElement == element) {
-                removeNextElement(current);
-                return;
+                return removeNextElement(current);
             }
             current = current.getNext();
         }
+        throw new NoSuchElementException();
     }
-    public void removeNextElement(Node<T> current) {
+    public T removeNextElement(Node<T> current) {
         Node<T> next = current.getNext();
         if(next != null) {
             Node<T> nodeAfterNext = next.getNext();
             current.setNext(nodeAfterNext);
             next.setNext(null);
             size--;
+            return next.getValue();
+        } else {
+            throw new NoSuchElementException();
         }
     }
-    public void removeFirstElement() {
+    public T removeFirstElement() {
         if(!isEmpty()) {
+            T value = head.getValue();
             Node<T> next = head.getNext();
             head.setNext(null);
             head = next;
             size--;
+            return value;
+        } else {
+            throw new EmptyListException();
         }
     }
     public Optional<T> get(int element) {
@@ -92,13 +99,13 @@ public class SinglyLinkedList<T> {
         return Optional.empty();
     }
     public Boolean isEmpty() {
-        return size < 1 ? true : false;
+        return size < 1;
     }
     public int size() {
         return size;
     }
-    public Node<T> getHead() {
-        return head;
+    public Optional<Node<T>> getHead() {
+        return Optional.ofNullable(head);
     }
     public void print() {
         Node<T> current = head;
@@ -109,7 +116,7 @@ public class SinglyLinkedList<T> {
     }
     public SinglyLinkedList<T> copy() {
         SinglyLinkedList<T> linkedListCopy = new SinglyLinkedList<>();
-        Node<T> current = this.getHead();
+        Node<T> current = getHead().orElseThrow();
         while(current != null) {
             linkedListCopy.addLast(current.getValue());
             current = current.getNext();

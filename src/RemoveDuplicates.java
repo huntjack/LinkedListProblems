@@ -24,7 +24,10 @@ public class RemoveDuplicates {
         } else if(linkedList.isEmpty()) {
             return linkedList;
         }
-        Node<T> current = linkedList.getHead();
+        Node<T> current =
+                linkedList
+                        .getHead()
+                        .orElseThrow();
         T initialValue = current.getValue();
         Set<T> set = new HashSet<>();
         set.add(initialValue);
@@ -53,7 +56,10 @@ public class RemoveDuplicates {
         } else if(linkedList.isEmpty()) {
             return linkedList;
         }
-        Node<T> current = linkedList.getHead();
+        Node<T> current =
+                linkedList
+                        .getHead()
+                        .orElseThrow();
         while(current != null) {
             removeElementDuplicates(linkedList, current);
             current = current.getNext();

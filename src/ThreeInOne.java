@@ -43,7 +43,7 @@ public class ThreeInOne<T> {
             throw new IllegalArgumentException();
         }
         if(isLeftFull() && isRightFull()) {
-            throw new FullStackException();
+            throw new FullListException();
         } else if(isLeftFull() && !isRightFull()) {
             shiftMidRight(1);
             return pushLeft(value);
@@ -106,7 +106,7 @@ public class ThreeInOne<T> {
             throw new IllegalArgumentException();
         }
         if(isMidFull()) {
-            throw new FullStackException();
+            throw new FullListException();
         } else if(isRightFull() && !isLeftFull() && !isMidEmpty()) {
             shiftMidLeft(1);
             return pushMid(value);
@@ -137,7 +137,7 @@ public class ThreeInOne<T> {
              throw new IllegalArgumentException();
          }
          if(isRightFull() && isLeftFull()) {
-             throw new FullStackException();
+             throw new FullListException();
          } else if(isRightFull() && !isLeftFull()) {
              shiftMidLeft(1);
              return pushRight(value);

@@ -1,5 +1,3 @@
-import java.util.Calendar;
-
 public class LoadedStack {
     private MyStack<Character> stack;
     private Node<Character> characterNode;

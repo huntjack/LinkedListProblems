@@ -34,33 +34,32 @@ public class DoublyLinkedList<T> {
         head = new DoublyLinkedListNode<>(value);
         tail = head;
     }
-    public void remove(int element) {
+    public T remove(int element) {
         if(head == null) {
-            return;
+            throw new EmptyListException();
         } else if(element == 0) {
-            removeFirstElement();
-            return;
+            return removeFirstElement();
         }
         DoublyLinkedListNode<T> current = head;
         for(int i = 0; i < element && current != null; i++) {
             int nextElement = i + 1;
             if(nextElement == element) {
-                removeNextElement(current);
-                return;
+                return removeNextElement(current);
             }
             current = current.getNext();
         }
+        throw new NoSuchElementException();
     }
-    public Optional<T> removeFirstElement() {
+    public T removeFirstElement() {
         if(isEmpty()) {
-            return Optional.empty();
+            throw new EmptyListException();
         }
         if(!isEmpty() && tail == head) {
             T headValue = head.getValue();
             tail = null;
             head = null;
             size--;
-            return Optional.of(headValue);
+            return headValue;
         }
         T headValue = head.getValue();
         DoublyLinkedListNode<T> next = head.getNext();
@@ -68,9 +67,9 @@ public class DoublyLinkedList<T> {
         head.setNext(null);
         head = next;
         size--;
-        return Optional.of(headValue);
+        return headValue;
     }
-    public void removeNextElement(DoublyLinkedListNode<T> current) {
+    public T removeNextElement(DoublyLinkedListNode<T> current) {
         DoublyLinkedListNode<T> next = current.getNext();
         if(next != null) {
             DoublyLinkedListNode<T> nodeAfterNext = next.getNext();
@@ -83,19 +82,21 @@ public class DoublyLinkedList<T> {
             next.setNext(null);
             next.setPrevious(null);
             size--;
+            return next.getValue();
         }
+        throw new NoSuchElementException();
     }
-    public Optional<T> pop() {
+    public T pop() {
         if(isEmpty()) {
-            return Optional.empty();
+            throw new EmptyListException();
         } else if(tail == head) {
             T value = tail.getValue();
             removeFirstElement();
-            return Optional.of(value);
+            return value;
         } else  {
             T value = tail.getValue();
             removeNextElement(tail.getPrevious());
-            return Optional.of(value);
+            return value;
         }
     }
     public Optional<T> get(int element) {
@@ -121,11 +122,11 @@ public class DoublyLinkedList<T> {
         }
         return Optional.empty();
     }
-    public DoublyLinkedListNode<T> getHead() {
-        return head;
+    public Optional<DoublyLinkedListNode<T>> getHead() {
+        return Optional.ofNullable(head);
     }
-    public DoublyLinkedListNode<T> getTail() {
-        return tail;
+    public Optional<DoublyLinkedListNode<T>> getTail() {
+        return Optional.ofNullable(tail);
     }
     public Boolean isEmpty() {
         return size < 1;
@@ -139,7 +140,7 @@ public class DoublyLinkedList<T> {
     }
     public DoublyLinkedList<T> copy() {
         DoublyLinkedList<T> linkedListCopy = new DoublyLinkedList<>();
-        DoublyLinkedListNode<T> current = this.getHead();
+        DoublyLinkedListNode<T> current = getHead().orElseThrow();
         while(current != null) {
             linkedListCopy.addLast(current.getValue());
             current = current.getNext();

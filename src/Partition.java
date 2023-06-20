@@ -22,7 +22,10 @@ public class Partition {
             return Optional.empty();
         }
         Node<Integer> lessThanX = null;
-        Node<Integer> current = linkedList.getHead();
+        Node<Integer> current =
+                linkedList
+                        .getHead()
+                        .orElseThrow();
         int currentValue = current
                 .getValue()
                 .intValue();
@@ -39,7 +42,10 @@ public class Partition {
                 linkedList.removeNextElement(current);
                 linkedList.addFirst(next);
                 if(lessThanX == null) {
-                    lessThanX = linkedList.getHead();
+                    lessThanX =
+                            linkedList
+                                    .getHead()
+                                    .orElseThrow();
                 }
             } else {
                 current = current.getNext();

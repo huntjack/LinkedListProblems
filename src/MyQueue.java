@@ -5,13 +5,14 @@ public class MyQueue<T> {
     public void enqueue(T item) {
         linkedList.addLast(item);
     }
-    public Optional<T> dequeue() {
+    public T dequeue() {
         return linkedList.removeFirstElement();
     }
     public Optional<T> peek() {
         if(!linkedList.isEmpty()) {
             T value = linkedList
                     .getHead()
+                    .orElseThrow()
                     .getValue();
             return Optional.of(value);
         }

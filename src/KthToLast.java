@@ -37,14 +37,20 @@ public class KthToLast {
         if(k < 0) {
             throw new IllegalArgumentException();
         }
-        Node<T> runner = linkedList.getHead();
+        Node<T> runner =
+                linkedList
+                        .getHead()
+                        .orElseThrow();
         for(int i = 1; i < k; i++) {
             runner = runner.getNext();
             if(runner == null) {
                 throw new NoSuchElementException();
             }
         }
-        Node<T> current = linkedList.getHead();
+        Node<T> current =
+                linkedList
+                        .getHead()
+                        .orElseThrow();
         while(runner.getNext() != null) {
             runner = runner.getNext();
             current = current.getNext();
