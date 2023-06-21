@@ -1,22 +1,23 @@
 import java.util.Optional;
 
 public class MyStack<T> {
-    private DoublyLinkedList<T> linkedList = new DoublyLinkedList<>();
+    private SinglyLinkedList<T> linkedList = new SinglyLinkedList<>();
     public T pop() {
-        return linkedList.pop();
+        return linkedList.removeFirstElement();
     }
     public void push(T item) {
-        linkedList.addLast(item);
+        linkedList.addFirst(item);
     }
     public Optional<T> peek() {
         if(!linkedList.isEmpty()) {
             T value = linkedList
-                    .getTail()
+                    .getHead()
                     .orElseThrow()
                     .getValue();
             return Optional.of(value);
+        } else {
+            return Optional.empty();
         }
-        return Optional.empty();
     }
     public boolean isEmpty() {
         return linkedList.isEmpty();
