@@ -22,4 +22,7 @@ public class MyStack<T> {
     public boolean isEmpty() {
         return linkedList.isEmpty();
     }
+    public int size() {
+        return linkedList.size();
+    }
 }
