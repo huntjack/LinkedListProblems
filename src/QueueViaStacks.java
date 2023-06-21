@@ -26,6 +26,9 @@ public class QueueViaStacks<T> {
     public boolean isEmpty() {
         return active.isEmpty() && reserve.isEmpty();
     }
+    public int size() {
+        return active.size() + reserve.size();
+    }
     public static void main(String[] args) {
         QueueViaStacks<Integer> queue = new QueueViaStacks<>();
         for(int i = 0; i < 5; i++) {
@@ -38,6 +41,7 @@ public class QueueViaStacks<T> {
         for(int i = 5; i < 10; i++) {
             queue.enqueue(i);
         }
+        System.out.println("size: " + queue.size());
         StringBuilder stringBuilder = new StringBuilder("Stack: ");
         while(!queue.isEmpty()) {
             stringBuilder.append(queue.dequeue());
