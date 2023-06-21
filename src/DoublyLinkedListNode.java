@@ -1,7 +1,7 @@
 public class DoublyLinkedListNode<T> {
-    DoublyLinkedListNode<T> next;
-    DoublyLinkedListNode<T> previous;
-    T value;
+    private DoublyLinkedListNode<T> next;
+    private DoublyLinkedListNode<T> previous;
+    private T value;
     public DoublyLinkedListNode<T> getNext() {
         return next;
     }
