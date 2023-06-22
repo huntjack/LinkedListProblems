@@ -1,6 +1,16 @@
 import java.util.NoSuchElementException;
 
 public class DeleteMiddleNode {
+    public static <T> boolean deleteMiddleNode(Node<T> node) {
+        if(node == null || node.getNext() == null) {
+            return false;
+        }
+        Node<T> next = node.getNext();
+        node.setValue(next.getValue());
+        node.setNext(next.getNext());
+        next.setNext(null);
+        return true;
+    }
     public static void main(String[] args) {
         SinglyLinkedList<Integer> linkedList = new SinglyLinkedList<>();
         linkedList.addLast(99);
@@ -15,15 +25,5 @@ public class DeleteMiddleNode {
                 .orElseThrow(NoSuchElementException::new);
         deleteMiddleNode(target);
         linkedList.print();
-    }
-    public static <T> boolean deleteMiddleNode(Node<T> node) {
-        if(node == null || node.getNext() == null) {
-            return false;
-        }
-        Node<T> next = node.getNext();
-        node.setValue(next.getValue());
-        node.setNext(next.getNext());
-        next.setNext(null);
-        return true;
     }
 }

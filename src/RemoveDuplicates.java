@@ -2,22 +2,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RemoveDuplicates {
-    public static void main(String[] args) {
-        SinglyLinkedList<Integer> linkedList = new SinglyLinkedList<>();
-        linkedList.addLast(99);
-        linkedList.addLast(99);
-        linkedList.addLast(3);
-        linkedList.addLast(3);
-        linkedList.addLast(5);
-        linkedList.addLast(99);
-        linkedList.addLast(5);
-        SinglyLinkedList<Integer> linkedListCopy = linkedList.copy();
-        linkedList = removeDuplicatesWithSet(linkedList);
-        linkedList.print();
-        System.out.println();
-        linkedListCopy = removeDuplicatesInPlace(linkedListCopy);
-        linkedListCopy.print();
-    }
     public static <T> SinglyLinkedList<T> removeDuplicatesWithSet(SinglyLinkedList<T> linkedList) {
         if(linkedList == null) {
             throw new IllegalArgumentException();
@@ -78,5 +62,21 @@ public class RemoveDuplicates {
                 runner = runner.getNext();
             }
         }
+    }
+    public static void main(String[] args) {
+        SinglyLinkedList<Integer> linkedList = new SinglyLinkedList<>();
+        linkedList.addLast(99);
+        linkedList.addLast(99);
+        linkedList.addLast(3);
+        linkedList.addLast(3);
+        linkedList.addLast(5);
+        linkedList.addLast(99);
+        linkedList.addLast(5);
+        SinglyLinkedList<Integer> linkedListCopy = linkedList.copy();
+        linkedList = removeDuplicatesWithSet(linkedList);
+        linkedList.print();
+        System.out.println();
+        linkedListCopy = removeDuplicatesInPlace(linkedListCopy);
+        linkedListCopy.print();
     }
 }

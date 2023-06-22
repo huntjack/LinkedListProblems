@@ -1,24 +1,6 @@
 import java.util.NoSuchElementException;
 
 public class SumLists {
-    public static void main(String[] args) {
-        SinglyLinkedList<Integer> listOne = new SinglyLinkedList<>();
-        listOne.addLast(9);
-        listOne.addLast(9);
-        listOne.addLast(7);
-        listOne.addLast(0);
-        SinglyLinkedList<Integer> listTwo = new SinglyLinkedList<>();
-        listTwo.addLast(2);
-        listTwo.addLast(9);
-        listTwo.addLast(5);
-        SinglyLinkedList<Integer> resultOne = sumListsInReverseOrder(listOne, listTwo);
-        resultOne.print();
-        System.out.println();
-        SinglyLinkedList<Integer> copyOfListOne = listOne.copy();
-        SinglyLinkedList<Integer>  copyOfListTwo = listTwo.copy();
-        SinglyLinkedList<Integer>  resultTwo = sumListsInForwardOrder(copyOfListOne, copyOfListTwo);
-        resultTwo.print();
-    }
     public static SinglyLinkedList<Integer> sumListsInReverseOrder(SinglyLinkedList<Integer> listOne, SinglyLinkedList<Integer> listTwo) {
         Node<Integer> currentOne =
                 listOne
@@ -120,5 +102,23 @@ public class SumLists {
         partialResult.addFirst(sum);
         partialResult.setCarryDigit(newCarryDigit);
         return partialResult;
+    }
+    public static void main(String[] args) {
+        SinglyLinkedList<Integer> listOne = new SinglyLinkedList<>();
+        listOne.addLast(9);
+        listOne.addLast(9);
+        listOne.addLast(7);
+        listOne.addLast(0);
+        SinglyLinkedList<Integer> listTwo = new SinglyLinkedList<>();
+        listTwo.addLast(2);
+        listTwo.addLast(9);
+        listTwo.addLast(5);
+        SinglyLinkedList<Integer> resultOne = sumListsInReverseOrder(listOne, listTwo);
+        resultOne.print();
+        System.out.println();
+        SinglyLinkedList<Integer> copyOfListOne = listOne.copy();
+        SinglyLinkedList<Integer>  copyOfListTwo = listTwo.copy();
+        SinglyLinkedList<Integer>  resultTwo = sumListsInForwardOrder(copyOfListOne, copyOfListTwo);
+        resultTwo.print();
     }
 }

@@ -1,13 +1,5 @@
 
 public class Palindrome {
-    public static void main(String[] args) {
-        String palindrome = new String("racecar");
-        SinglyLinkedList<Character> palindromeList = toLinkedList(palindrome);
-        String notPalindrome = new String("racecat");
-        SinglyLinkedList<Character> notPalindromeList = toLinkedList(notPalindrome);
-        System.out.println("This should be true: " + isPalindrome(palindromeList));
-        System.out.println("This should be false: " + isPalindrome(notPalindromeList));
-    }
     public static boolean isPalindrome(SinglyLinkedList<Character> characters) {
         if(characters == null) {
             throw new IllegalArgumentException();
@@ -53,5 +45,13 @@ public class Palindrome {
             linkedList.addLast(character);
         }
         return linkedList;
+    }
+    public static void main(String[] args) {
+        String palindrome = new String("racecar");
+        SinglyLinkedList<Character> palindromeList = toLinkedList(palindrome);
+        String notPalindrome = new String("racecat");
+        SinglyLinkedList<Character> notPalindromeList = toLinkedList(notPalindrome);
+        System.out.println("This should be true: " + isPalindrome(palindromeList));
+        System.out.println("This should be false: " + isPalindrome(notPalindromeList));
     }
 }

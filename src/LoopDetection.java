@@ -2,21 +2,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class LoopDetection {
-    public static void main(String[] args) {
-        Node<Integer> head = Intersection.createList(9);
-        Node<Integer> tail = Intersection.get(head, 8)
-                .orElseThrow(NoSuchElementException::new);
-        Node<Integer> target = Intersection.get(head, 3)
-                .orElseThrow(NoSuchElementException::new);
-        tail.setNext(target);
-        Optional<Node<Integer>> optionalIntersection = findIntersection(head);
-        Node<Integer> intersection = optionalIntersection
-                .orElseThrow(NoSuchElementException::new);
-        System.out.println("Intersection: " + intersection.getValue());
-        Optional<Node<Integer>> optionalStartOfLoop = findStartOfLoop(head);
-        Node<Integer> startOfLoop = optionalStartOfLoop.orElseThrow(NoSuchElementException::new);
-        System.out.println("Start of Loop: " + startOfLoop.getValue());
-    }
     public static <T> Optional<Node<T>> findIntersection(Node<T> node) {
         Node<T> slow = node;
         Node<T> fast = node;
@@ -42,5 +27,20 @@ public class LoopDetection {
             fast = fast.getNext();
         }
         return Optional.of(fast);
+    }
+    public static void main(String[] args) {
+        Node<Integer> head = Intersection.createList(9);
+        Node<Integer> tail = Intersection.get(head, 8)
+                .orElseThrow(NoSuchElementException::new);
+        Node<Integer> target = Intersection.get(head, 3)
+                .orElseThrow(NoSuchElementException::new);
+        tail.setNext(target);
+        Optional<Node<Integer>> optionalIntersection = findIntersection(head);
+        Node<Integer> intersection = optionalIntersection
+                .orElseThrow(NoSuchElementException::new);
+        System.out.println("Intersection: " + intersection.getValue());
+        Optional<Node<Integer>> optionalStartOfLoop = findStartOfLoop(head);
+        Node<Integer> startOfLoop = optionalStartOfLoop.orElseThrow(NoSuchElementException::new);
+        System.out.println("Start of Loop: " + startOfLoop.getValue());
     }
 }

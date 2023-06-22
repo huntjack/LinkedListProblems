@@ -2,22 +2,6 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class Intersection {
-    public static void main(String[] args) {
-        Node<Integer> listOneHead = createList(10);
-        Node<Integer> target = get(listOneHead, 8)
-                .orElseThrow(NoSuchElementException::new);
-        System.out.println("Selected target = " + target.getValue());
-        Node<Integer> listTwoHead = createList(7);
-        Node<Integer> currentLastNodeOfListTwo = get(listTwoHead, 6)
-                .orElseThrow(NoSuchElementException::new);
-        currentLastNodeOfListTwo.setNext(target);
-        Optional<Node<Integer>> optionalResult = intersect(listOneHead, listTwoHead);
-        int result = optionalResult
-                .orElseThrow(NoSuchElementException::new)
-                .getValue();
-        System.out.println("Intersection: " + result);
-
-    }
     public static Node<Integer> createList(int size) {
         Node<Integer> head = new Node<>(0);
         Node<Integer> current = head;
@@ -86,5 +70,21 @@ public class Intersection {
             }
         }
         return Optional.empty();
+    }
+    public static void main(String[] args) {
+        Node<Integer> listOneHead = createList(10);
+        Node<Integer> target = get(listOneHead, 8)
+                .orElseThrow(NoSuchElementException::new);
+        System.out.println("Selected target = " + target.getValue());
+        Node<Integer> listTwoHead = createList(7);
+        Node<Integer> currentLastNodeOfListTwo = get(listTwoHead, 6)
+                .orElseThrow(NoSuchElementException::new);
+        currentLastNodeOfListTwo.setNext(target);
+        Optional<Node<Integer>> optionalResult = intersect(listOneHead, listTwoHead);
+        int result = optionalResult
+                .orElseThrow(NoSuchElementException::new)
+                .getValue();
+        System.out.println("Intersection: " + result);
+
     }
 }

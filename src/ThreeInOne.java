@@ -14,30 +14,6 @@ public class ThreeInOne<T> {
         midLeft = array.length / 2;
         midRight = midLeft;
     }
-    public static void main(String[] args) {
-        Integer[] array = new Integer[13];
-        ThreeInOne<Integer> threeInOne = new ThreeInOne(array);
-        threeInOne.pushLeft(0);
-        threeInOne.pushLeft(1);
-        threeInOne.pushLeft(2);
-        threeInOne.pushLeft(3);
-        threeInOne.pushLeft(4);
-        threeInOne.pushRight(12);
-        threeInOne.pushRight(11);
-        threeInOne.pushRight(10);
-        threeInOne.pushRight(9);
-        threeInOne.pushRight(8);
-        threeInOne.pushRight(7);
-        threeInOne.pushLeft(5);
-        threeInOne.pushMid(6);
-        System.out.println("peek left: " + threeInOne.peekLeft());
-        System.out.println("peek mid: " + threeInOne.peekMid());
-        System.out.println("peek right: " + threeInOne.peekRight());
-        System.out.println("pop left: " + threeInOne.popLeft());
-        System.out.println("pop mid: " + threeInOne.popMid());
-        System.out.println("pop right: " + threeInOne.popRight());
-        threeInOne.print();
-    }
     private T pushLeft(T value) {
         if(value == null) {
             throw new IllegalArgumentException();
@@ -204,5 +180,28 @@ public class ThreeInOne<T> {
             System.out.println(stringBuilder);
         }
     }
-
+    public static void main(String[] args) {
+        Integer[] array = new Integer[13];
+        ThreeInOne<Integer> threeInOne = new ThreeInOne(array);
+        threeInOne.pushLeft(0);
+        threeInOne.pushLeft(1);
+        threeInOne.pushLeft(2);
+        threeInOne.pushLeft(3);
+        threeInOne.pushLeft(4);
+        threeInOne.pushRight(12);
+        threeInOne.pushRight(11);
+        threeInOne.pushRight(10);
+        threeInOne.pushRight(9);
+        threeInOne.pushRight(8);
+        threeInOne.pushRight(7);
+        threeInOne.pushLeft(5);
+        threeInOne.pushMid(6);
+        System.out.println("peek left: " + threeInOne.peekLeft());
+        System.out.println("peek mid: " + threeInOne.peekMid());
+        System.out.println("peek right: " + threeInOne.peekRight());
+        System.out.println("pop left: " + threeInOne.popLeft());
+        System.out.println("pop mid: " + threeInOne.popMid());
+        System.out.println("pop right: " + threeInOne.popRight());
+        threeInOne.print();
+    }
 }
