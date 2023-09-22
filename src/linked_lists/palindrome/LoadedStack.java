@@ -1,3 +1,8 @@
+package linked_lists.palindrome;
+
+import common.MyStack;
+import common.Node;
+
 public class LoadedStack {
     private MyStack<Character> stack;
     private Node<Character> characterNode;

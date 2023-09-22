@@ -1,3 +1,7 @@
+package linked_lists.sum_lists;
+
+import common.SinglyLinkedList;
+
 public class PartialResult {
     private SinglyLinkedList<Integer> result;
     private int carryDigit = 0;

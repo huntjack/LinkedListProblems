@@ -1,3 +1,5 @@
+package common;
+
 public class DoublyLinkedListNode<T> {
     private DoublyLinkedListNode<T> next;
     private DoublyLinkedListNode<T> previous;

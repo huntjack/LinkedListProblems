@@ -1,3 +1,7 @@
+package stacks_and_queues.stack_min;
+
+import common.EmptyListException;
+
 import java.util.Optional;
 
 public class StackMin {

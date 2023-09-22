@@ -1,3 +1,7 @@
+package stacks_and_queues;
+
+import common.MyStack;
+
 import java.util.Optional;
 
 public class QueueViaStacks<T> {

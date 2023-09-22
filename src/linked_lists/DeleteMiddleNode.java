@@ -1,3 +1,8 @@
+package linked_lists;
+
+import common.Node;
+import common.SinglyLinkedList;
+
 import java.util.NoSuchElementException;
 
 public class DeleteMiddleNode {

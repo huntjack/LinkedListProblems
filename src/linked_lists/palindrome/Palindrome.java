@@ -1,3 +1,8 @@
+package linked_lists.palindrome;
+
+import common.MyStack;
+import common.Node;
+import common.SinglyLinkedList;
 
 public class Palindrome {
     public static boolean isPalindrome(SinglyLinkedList<Character> characters) {

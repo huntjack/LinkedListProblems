@@ -1,3 +1,5 @@
+package stacks_and_queues.stack_min;
+
 public class StackMinNode {
     private int value;
     private StackMinNode next;;

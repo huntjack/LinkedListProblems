@@ -1,3 +1,5 @@
+package stacks_and_queues.animal_shelter;
+
 import java.util.LinkedList;
 
 public class AnimalShelter {

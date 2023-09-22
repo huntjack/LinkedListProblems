@@ -1,3 +1,7 @@
+package linked_lists;
+
+import common.Node;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
 

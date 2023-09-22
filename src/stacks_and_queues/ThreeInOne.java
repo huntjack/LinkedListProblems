@@ -1,3 +1,7 @@
+package stacks_and_queues;
+
+import common.FullListException;
+
 import java.util.EmptyStackException;
 
 public class ThreeInOne<T> {

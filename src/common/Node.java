@@ -1,3 +1,5 @@
+package common;
+
 public class Node<T> {
     private Node<T> next;
     private T value;
